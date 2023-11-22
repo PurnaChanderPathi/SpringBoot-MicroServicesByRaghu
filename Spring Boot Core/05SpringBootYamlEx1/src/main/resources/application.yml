@@ -1,0 +1,19 @@
+my:
+  app:
+   host: purna@gmail.com
+   port: 885
+   username: sample
+   password: chandu
+   protocals:
+   - SMTP
+   - SMTPS
+   - SMTP2
+   headers:
+     modified: true
+     version: 3.2A
+     content: JSON
+   cob:
+     provider: GoDaddy
+     expExist: INACTIVE
+   
+   

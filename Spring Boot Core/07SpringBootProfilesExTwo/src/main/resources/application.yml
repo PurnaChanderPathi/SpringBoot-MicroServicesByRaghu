@@ -1,0 +1,33 @@
+my:
+  db:
+    driver: Oracle
+    pwd: chandu
+    url: jdbc-oracle
+    user: chandu
+---
+spring:
+  config:
+    activate:
+      on-profile: qa
+
+  
+my:
+  db:
+    driver: MySQL
+    pwd: purna
+    url: jdbc-mysql
+    user: purna
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  
+my:
+  db:
+    driver: Postgress
+    pwd: ajeeth
+    url: jdbc-psg
+    user: ajeeth
+
+
