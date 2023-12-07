@@ -1,0 +1,46 @@
+server:
+  port: 9094
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+      - id: product-service
+        predicates:
+        - Path=/api/product
+        uri: lb://product-service
+        filters:
+          - AuthenticationFilter
+
+      - id: order-service
+        predicates:
+        - Path=/api/order
+        uri: lb://order-service
+        filters:
+          - AuthenticationFilter
+
+      - id: discovery-server
+        predicates:
+        - Path=/eureka/web
+        uri: http://localhost:8761
+        filters:
+          - SetPath=/
+
+      - id: IDENTITY-SECURITY
+        predicates:
+          - Path=/auth/**
+        uri: lb://IDENTITY-SECURITY
+
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
