@@ -1,5 +1,6 @@
 package com.app.purna.consumer;
 
+import com.app.purna.dto.Customer;
 import org.apache.kafka.common.protocol.types.Field;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,10 +12,10 @@ public class KafkaMessageListener {
 
     Logger log = LoggerFactory.getLogger(KafkaMessageListener.class);
 
-    @KafkaListener(topics = "purna-demo4",groupId = "pc-group")
-    public void consume1(String message)
+    @KafkaListener(topics = "purna-demo",groupId = "pc-group-customer")
+    public void consumeEvents(Customer customer)
     {
-        log.info("consumer1 consume the message {} ", message);
+        log.info("consumer consume the message {} ", customer.toString());
     }
 //    @KafkaListener(topics = "purna-demo4",groupId = "pc-group")
 //    public void consume2(String message)
